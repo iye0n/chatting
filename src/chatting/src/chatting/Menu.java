@@ -1,11 +1,12 @@
 package chatting;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
 public class Menu extends JFrame{
-	private JRadioButtonMenuItem colorItems[],fonts[];
+	private JRadioButtonMenuItem color[],fonts[];
 	private JCheckBoxMenuItem styleItems[];
 	private ButtonGroup fontGroup, colorGroup;
 	private Openwindow openwindow;
@@ -19,25 +20,25 @@ public class Menu extends JFrame{
 	}
 	
 	public Menu(){
-		Menuframe = new JFrame("¼öÁö");
+		Menuframe = new JFrame("ìˆ˜ì§€");
 		ic1 = new ImageIcon("./image2.png");
 		image1 = new JLabel(ic1);
 		JMenuBar bar = new JMenuBar();
 		setJMenuBar(bar);
 		
-		JMenu ChatMenu = new JMenu("Ã¤ÆÃ(S)");
-		ChatMenu.setToolTipText("Ã¤ÆÃ ¸Ş´º");
+		JMenu ChatMenu = new JMenu("ì±„íŒ…(S)");
+		ChatMenu.setToolTipText("ì±„íŒ… ë©”ë‰´");
 		ChatMenu.setMnemonic('S');
 		
-		JMenuItem newItem = new JMenuItem("»õ·Î¿î Ã¤ÆÃ(N)");
+		JMenuItem newItem = new JMenuItem("ìƒˆë¡œìš´ ì±„íŒ…(N)");
 		newItem.setMnemonic('N');
 		ChatMenu.add(newItem);
 		
-		JMenuItem openItem = new JMenuItem("¿ÀÇÂ Ã¤ÆÃ(O)");
+		JMenuItem openItem = new JMenuItem("ì˜¤í”ˆ ì±„íŒ…(O)");
 		newItem.setMnemonic('O');
 		ChatMenu.add(openItem);
 		
-		JMenuItem exitItem = new JMenuItem("´İ±â(X)");
+		JMenuItem exitItem = new JMenuItem("ë‹«ê¸°(X)");
 		exitItem.setMnemonic('X');
 		ChatMenu.add(exitItem);
 		exitItem.addActionListener(new ActionListener() {
@@ -49,28 +50,30 @@ public class Menu extends JFrame{
 		
 		bar.add(ChatMenu);
 		
-		JMenu formatMenu = new JMenu("ÆíÁı(E)");
-		formatMenu.setToolTipText("ÆíÁı ¸Ş´º");
+		JMenu formatMenu = new JMenu("í¸ì§‘(E)");
+		formatMenu.setToolTipText("í¸ì§‘ ë©”ë‰´");
 		formatMenu.setMnemonic('E');
 		
-		String colors[] = {"Dark","Light","Red","Green","Blue"};
-		JMenu colorMenu = new JMenu("»ö»ó(C)");
+		String colors[] = {"Light","Dark","Red","Green","Blue"};
+		JMenu colorMenu = new JMenu("ìƒ‰ìƒ(C)");
 		colorMenu.setMnemonic('C');
-		colorItems = new JRadioButtonMenuItem[colors.length];
+		color = new JRadioButtonMenuItem[colors.length];
 		colorGroup = new ButtonGroup();
 		
 		for (int i=0;i<colors.length;i++)
 		{
-			colorItems[i] = new JRadioButtonMenuItem(colors[i]);
-			colorMenu.add(colorItems[i]);
+			color[i] = new JRadioButtonMenuItem(colors[i]);
+			colorMenu.add(color[i]);
+			colorGroup.add(color[i]);
 		}
 		
-		colorItems[0].setSelected(true);
+		color[0].setSelected(true);
 		formatMenu.add(colorMenu);
 		//formatMenu.addSeparator();
 		
-		String fontNames[]= {"±¼¸²","¹ÙÅÁ"};
-		JMenu fontMenu = new JMenu("±Û²Ã(T)");
+		String fontNames[]= {"êµ´ë¦¼","ë°”íƒ•"};
+		JMenu fontMenu = new JMenu("ê¸€ê¼´(T)");
+		fontMenu.setMnemonic('T');
 		fonts = new JRadioButtonMenuItem[fontNames.length];
         fontGroup = new ButtonGroup();
         
@@ -79,16 +82,25 @@ public class Menu extends JFrame{
             fonts[ i ] = new JRadioButtonMenuItem( fontNames[ i ] );
             fontMenu.add( fonts[ i ] );
             fontGroup.add( fonts[ i ] );
+            switch(i) {	
+            	case 0:// êµ´ë¦¼
+            		Font font1 = new Font("êµ´ë¦¼",Font.PLAIN,20);
+            		setFont(font1);
+            	case 1:
+            		Font font2 = new Font("ë°”íƒ•",Font.PLAIN,20);
+            		setFont(font2);
+            }
         }
         fonts[0].setSelected(true);
+        formatMenu.add(fontMenu);
         //fontMenu.addSeparator();
         
         bar.add(formatMenu);
         
-        JMenu helpMenu = new JMenu( "µµ¿ò¸»(H)" );
-        helpMenu.setToolTipText("µµ¿ò¸» ¸Ş´ºÀÔ´Ï´Ù");
+        JMenu helpMenu = new JMenu( "ë„ì›€ë§(H)" );
+        helpMenu.setToolTipText("ë„ì›€ë§ ë©”ë‰´ì…ë‹ˆë‹¤");
         helpMenu.setMnemonic( 'H' );
-        JMenuItem helpItem = new JMenuItem( "µµ¿ò¸»Ç×¸ñ(L)" );
+        JMenuItem helpItem = new JMenuItem( "ë„ì›€ë§ í•­ëª©(L)" );
         helpItem.setMnemonic( 'L' );
         helpMenu.add(helpItem);
         bar.add( helpMenu );
