@@ -10,7 +10,7 @@ public class Client {
 		try {
 			socket = new Socket();
 			System.out.println("request...");
-			socket.connect(new InetSocketAddress("192.168.11.1",5000));
+			socket.connect(new InetSocketAddress("192.168.43.74",8080));
 			System.out.println("success");
 		}catch(Exception except) {}
 		if(!socket.isClosed()) {
