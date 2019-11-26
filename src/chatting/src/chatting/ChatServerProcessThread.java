@@ -45,10 +45,8 @@ public class ChatServerProcessThread extends Thread{
 		synchronized (printWriter) {
 			((List<PrintWriter>) printWriter).remove(printWriter);
 		}
-	
 		System.out.println(this.name+" disconnected");
-		printWriter.flush();
-		
+		printWriter.flush();	
 	}
 	
 	private void printMessage(String data) {
@@ -68,6 +66,5 @@ public class ChatServerProcessThread extends Thread{
 		// TODO Auto-generated method stub
 		System.out.println(string);
 	}
-	
-	
+
 }

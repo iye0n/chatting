@@ -14,7 +14,7 @@ public class Openwindow extends JPanel
 	private static JLabel image1,image2;
 	private static ImageIcon ic1,ic2;
 	private static JPasswordField passText;
-	private static JTextField userText;
+	private static JTextField userText,nameText;
 	private static boolean bLoginCheck;
 	private static JButton btnRegi;
 	private static JButton btnLogin;
@@ -131,9 +131,9 @@ public class Openwindow extends JPanel
         	}
         });
         
-        userText = new JTextField(20);
-	    userText.setBounds(110,40,160,25);
-	    frame3.add(userText);
+        nameText = new JTextField(20);
+	    nameText.setBounds(110,40,160,25);
+	    frame3.add(nameText);
         		
 		userText = new JTextField(20);
 	    userText.setBounds(110,70,160,25);
@@ -162,7 +162,7 @@ public class Openwindow extends JPanel
 				//showFrameText();
 				frame2.dispose();
 				Openwindow openwindow = new Openwindow();
-				openwindow.menu=new Menu();
+				openwindow.menu=new Menu(openwindow.getName());
 				openwindow.menu.menuSetting(openwindow);
 			}
 		}
@@ -171,6 +171,9 @@ public class Openwindow extends JPanel
 		}
 		else
 			JOptionPane.showMessageDialog(null, "fail");
+	}
+	public String getName() {
+		return nameText.getText();
 	}
 	
 	public static boolean isLogin() {
